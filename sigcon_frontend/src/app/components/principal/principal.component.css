@@ -1,0 +1,49 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Divide en 2 columnas */
+    grid-template-rows: repeat(2, auto); /* Divide en 2 filas de altura automática */
+    gap: 10px; /* Espacio entre los elementos */
+    margin-top: 50px;
+    padding: 20px; /* Espaciado interior del contenedor */
+  }
+  .banda {
+    grid-column: span 2; /* Ocupa dos columnas completas */
+    background-color: rgba(0, 0, 128, 0.8); /* Color de fondo de la banda */
+    padding: 20px; /* Espaciado interior de la banda */
+    display: flex;
+  }
+  /* Estilos para los elementos individuales */
+  #titulo, #figura {
+    padding: 10px; /* Espaciado interior de cada elemento */
+    align-items: center; /* Centra verticalmente */
+    text-align: center;
+  }
+  h1{
+    color: #000080;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 100px;
+  }
+  #subtitulo, #parrafo {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    flex-grow: 1;
+    color: #ccc;
+  } 
+    /* Estilo para la imagen dentro del div */
+  #figura img {
+      border-radius: 20px; /* Redondea los bordes de la imagen */
+  }
+    
+  #subtitulo{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+  }  
+  /* Estilo para el div parrafo */
+  #parrafo{
+      display: flex;
+      text-align: center;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 16px;
+    }
+      

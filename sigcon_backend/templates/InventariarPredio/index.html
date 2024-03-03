@@ -1,0 +1,23 @@
+{% extends 'InventariarPredio/layout.html' %}
+
+{% block title %}
+  Inventariar Predio
+{% endblock %}
+
+{% block body %}
+<!-- FORM -->
+    
+    <!-- MESSAGE -->
+    {% include 'InventariarPredio/partials/_message.html' %}
+
+    <!-- FORM -->
+    <div class="card py-7" style="background-color: #ffffff00">
+      
+
+      {%  include 'InventariarPredio/partials/_taskForm.html' %}
+    </div>
+  
+{% endblock %}
+
+
+

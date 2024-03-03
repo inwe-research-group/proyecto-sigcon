@@ -1,0 +1,121 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+
+<body>
+<div class="content-cuadro" >
+    <div class="cuadro">
+        <!-- Titulo -->
+        <div>
+            <h1 class="titulo animate__animated animate__backInLeft p-1 border border-info border-start-0 rounded-end text-center display-6 fw-bold">Solicitudes</h1>
+        </div>
+
+        <!-- Pestañas -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pendientes-tab" data-bs-toggle="tab" data-bs-target="#pendientes-tab-pane" type="button" role="tab" aria-controls="pendientes-tab-pane" aria-selected="true">Pendientes</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="completadas-tab" data-bs-toggle="tab" data-bs-target="#completadas-tab-pane" type="button" role="tab" aria-controls="completadas-tab-pane" aria-selected="false">Cotizadas</button>
+            </li>
+        </ul>
+        
+        <!-- Tablas -->
+        <div class="tab-content" id="myTabContent">
+            <!-- Tabla de Pendientes -->
+            <div class="tab-pane fade show active" style=" background-color: #064ce480; box-shadow: 0 0 30px #064ce480" id="pendientes-tab-pane" role="tabpanel" aria-labelledby="pendientes-tab" tabindex="0">
+                <div>
+                    <select class="rounded" style="background-color: #f0c63afa; text-align: center; width: 100px;" (change)="onTableSizeChanges($event)">
+                        <option *ngFor="let size of tablesizes" [value]="size">
+                            {{size}} Filas
+                        </option>
+                    </select>
+                </div>
+                  
+                  <table class="table table-striped table-bordered border-primary table-sm">
+                    <thead>
+                        <tr>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white">ID Solicitud</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white;">Predio</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white;">Solicitante</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white;">Servicio</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white;">Cotizar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let solicitud_ of solicitudes|paginate: { itemsPerPage: tablesize, currentPage: page, totalItems: count };let i=index">                 
+                            <td  style="background-color: #1268b8; color: white; text-align: center;">{{formatear_id(solicitud_.id_solicitud)}}</td>
+                            <td  style="background-color: #1268b8; color: white; text-align: center;">{{solicitud_.predio.descripcion}}</td>
+                            <td  style="background-color: #1268b8; color: white; text-align: center;">{{solicitud_.solicitante.persona.nombre_completo}}</td>
+                            <td  style="background-color: #1268b8; color: white; text-align: center;">{{solicitud_.servicio.descripcion}}</td>
+                            <td  style="background-color: #1268b8; color: white; text-align: center;"> 
+                                <div class="d-flex justify-content-center" >   
+                                    <!-- modifica martinez vicente -->      
+                                    <button class="btn btn-success" type="button" data-toggle="tooltip" title="Cotizar" style="background-color: #3cff00;" (click)="Cotizar(solicitud_.id_solicitud) ">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/1194/1194711.png"  width="30" height="30">
+                                    </button>
+                                </div>  
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="onTableDataChanges($event)">
+
+                    </pagination-controls>
+                </div>
+            </div>
+            <!-- Tabla de Completadas -->
+            <div class="tab-pane fade" style=" background-color: #064ce480; box-shadow: 0 0 30px #064ce480" id="completadas-tab-pane" role="tabpanel" aria-labelledby="completadas-tab" tabindex="0">
+                <div>
+                    <select class="rounded" style="background-color: #f0c63afa; text-align: center; width: 100px;" (change)="onTableSizeChanges($event)">
+                        <option *ngFor="let size of tablesizes" [value]="size">
+                            {{size}} Filas
+                        </option>
+                    </select>
+                </div>
+                <table class="table table-striped table-bordered border-primary table-sm" >
+                    <thead>
+                        <tr>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white">ID Solicitud</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white">Personal</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white">Servicio</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white">Fecha</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white">Importe (S/)</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white">Estado</th>
+                            <th class="th-sm text-center" style=" background-color: #209ab9d5; color: white">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cotizacion_ of cotizaciones|paginate: { itemsPerPage: tablesize, currentPage: page, totalItems: count };let i=index ">
+                            <td style="background-color: #1268b8; color: white; text-align: center;">{{formatear_id(cotizacion_.id_solicitud)}}</td>
+                            <td style="background-color: #1268b8; color: white; text-align: center;">{{cotizacion_.personal.persona.nombre_completo}}</td>
+                            <td style="background-color: #1268b8; color: white; text-align: center;">{{cotizacion_.solicitud.servicio.descripcion}}</td>
+                            <td style="background-color: #1268b8; color: white; text-align: center;">{{cotizacion_.fecha_cotizacion}}</td>
+                            <td style="background-color: #1268b8; color: white; text-align: center;">{{cotizacion_.importe}}</td>
+                            <td style="background-color: #1268b8; color: white; text-align: center;">{{cotizacion_.estado.descripcion}}</td>
+                            <td style="background-color: #1268b8; color: white; text-align: center;">                 
+                                <div class=" mt-1">
+                                    <div class="d-flex justify-content-center">
+                                    <button class="btn btn-primary" type="button" data-toggle="tooltip" title="Descargar" style="background-color: #00fff2;" (click)="pdf(cotizacion_.id_solicitud) ">
+                                        <img src="https://cdn.icon-icons.com/icons2/1123/PNG/512/downloadcircularbuttonsymbol_79580.png" width="30" height="25">
+                                    </button>
+                                    <button class="btn btn-primary" type="button" data-toggle="tooltip" title="Observar" style="background-color: rgb(160, 100, 255);" (click)="verCotizacion(cotizacion_.id_solicitud)">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/60/60809.png"  width="30" height="25">
+                                    </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="onTableDataChanges($event)">
+                    </pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

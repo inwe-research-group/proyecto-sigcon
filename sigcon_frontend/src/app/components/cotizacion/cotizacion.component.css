@@ -1,0 +1,22 @@
+
+        /* Estilos compartidos */
+        .custom-row {
+            padding: auto;
+        }
+
+        .custom-col {
+            padding: auto;
+        }
+
+        body {
+            background-color: rgba(17, 231, 238, 0.226); /* Cambia el color a tu preferencia */
+        }
+
+        .btn-edit {
+            background-color: #ff5e00c5;
+            position: absolute;
+            top: 2.5%;
+            right: 5%;
+            transform: translate(50%, -50%);
+        }
+

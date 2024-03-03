@@ -1,0 +1,183 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+
+
+<body class="container-fluid">
+    <!-- Agrega esto en tu template HTML -->
+
+    <h1 class="animate__animated animate__backInLeft p-1 border border-info border-start-0 rounded-end text-center display-6 fw-bold">
+        Vizualizar informacion
+    </h1>
+
+    <button class="animate__animated animate__backInLeft btn btn-outline-primary" style="position: absolute; top: 7px;" (click)="goBack()">
+        <i class="material-icons" style="text-align: center;">arrow_back</i> Volver
+    </button>
+
+    <div class="row custom-row">
+
+        <!-- PRIMERA COLUMNA -->
+
+        <div class="col-lg-5 col-md-6 col-sm-6 custom-col mx-auto">
+            <!-- Solicitante -->
+            <div class="animate__animated animate__fadeInUp card mx-auto" style="max-width: 30 rem; color: #000000; margin-top: 20px;">
+                    
+                <div class="h5 card-header" style=" background-color: #03fab094;">Nro. de Cotización:
+                        {{Solicitud.id_solicitud}}
+                </div>
+
+                <!-- <img src="https://cdn-icons-png.flaticon.com/512/6326/6326055.png" class="card-img-top"
+                    style="background-color: #f7cb0573; margin-top:-30px; margin-bottom: -100px; " alt="..."> -->
+
+                <div class="card-body" style=" background-color: #03f2fa73;">
+                    <h5 class="h5 card-title text-center">Solicitante</h5>
+
+                    <div class="card-body">
+
+                        <ul class="list-group list-group-horizontal">
+                            <li class="list-group-item col-5 text-break" style=" background-color: #1591f7be;">Nombre
+                                completo:</li>
+                            <li class="list-group-item col-7 text-break"
+                                style=" background-color: #1a8ce9be; text-align: center;">{{ Solicitante.nombrecompleto
+                                }}</li>
+                        </ul>
+                        <ul class="list-group list-group-horizontal">
+                            <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Rol:</li>
+                            <li class="list-group-item col-7 text-break"
+                                style=" background-color: #1a8ce9be; text-align: center;">{{ Rol.descripcion }}</li>
+                        </ul>
+                        <ul class="list-group list-group-horizontal">
+                            <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Correo:
+                            </li>
+                            <li class="list-group-item col-7 text-break"
+                                style=" background-color: #1a8ce9be; text-align: center;">{{ Solicitante.correo }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Predio -->
+            <div class="animate__animated animate__fadeInUp card mx-auto" style="max-width: auto; color: #000000; margin-top: 20px;">
+                <div class="h5 card-header text-center" style=" background-color: #03fab094;">Predio</div>
+
+                <div class="card-body" style="background-color: #03f2fa73;">
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Nombre:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ Predio.descripcion }}</li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Dirección:
+                        </li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ Predio.direccion }}</li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Tipo de
+                            Predio:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ TipoPredio.nombre }}</li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">RUC:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ Predio.ruc }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA COLUMNA -->
+
+        <div class="col-lg-5 col-md-6 col-sm-6 custom-col mx-auto">
+            <!-- Servicios -->
+            <div class="animate__animated animate__fadeInUp card mx-auto" style="max-width: auto; color: #000000; margin-top: 20px;">
+                <div class="h5 card-header text-center" style=" background-color: #03fab094;">Servicios</div>
+
+                <div class="card-body" style="background-color: #03f2fa73">
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Cant. de
+                            administración:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ Solicitud.cant_administracion
+                            }}</li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Cant. de
+                            personal de limpieza:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ Solicitud.cant_plimpieza }}
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Cant. de
+                            jardineros:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ Solicitud.cant_jardineria }}
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Cant. de
+                            vigilantes:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ Solicitud.cant_vigilantes }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- Cotización -->
+             <div class="animate__animated animate__fadeInUp card mx-auto" style="max-width: auto; color: #000000; margin-top: 20px;">
+                <div class="h5 card-header text-center" style=" background-color: #03fab094;">Cotización</div>
+
+                <div class="card-body" style="margin-top: 3px; background-color: #03f2fa73">
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Imp. por
+                            administrador:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ importe_administrador }}</li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Imp. por
+                            personal de limpieza:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ importe_personallimp }}</li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Imp. por
+                            jardineros:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ importe_jardineros }}</li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Imp. por
+                            vigilantes:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ importe_vigilantes }}</li>
+                    </ul>
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item col-5 text-break" style=" background-color: #1a8ce9be;">Total:</li>
+                        <li class="list-group-item col-7 text-break"
+                            style=" background-color: #1a8ce9be; text-align: center;">{{ importe_total }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
